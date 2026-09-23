@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Catalogue</title>
+
+    <link
+        rel="stylesheet"
+        href="catalogue.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ============================== -->
+    <!-- HEADER                         -->
+    <!-- ============================== -->
+
+    <header>
+
+        <h1>
+            Catalogue
+        </h1>
+
+        <button id="backButton">
+            Retour
+        </button>
+
+    </header>
+
+
+    <!-- ============================== -->
+    <!-- RECHERCHE + FILTRES            -->
+    <!-- ============================== -->
+
+    <section id="catalogueControls">
+
+
+        <!-- RECHERCHE -->
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Rechercher un personnage..."
+            autocomplete="off"
+        >
+
+
+        <!-- FILTRES DE RARETE -->
+
+        <div id="rarityFilters">
+
+            <button
+                class="rarityFilter active"
+                data-rarity="ALL"
+            >
+                Tous
+            </button>
+
+
+            <button
+                class="rarityFilter"
+                data-rarity="R"
+            >
+                R
+            </button>
+
+
+            <button
+                class="rarityFilter"
+                data-rarity="SR"
+            >
+                SR
+            </button>
+
+
+            <button
+                class="rarityFilter"
+                data-rarity="SSR"
+            >
+                SSR
+            </button>
+
+
+            <button
+                class="rarityFilter"
+                data-rarity="LR"
+            >
+                LR
+            </button>
+
+
+            <button
+                class="rarityFilter"
+                data-rarity="ULR"
+            >
+                ULR
+            </button>
+
+        </div>
+
+
+        <!-- COMPTEUR -->
+
+        <span id="catalogueCount">
+            Chargement...
+        </span>
+
+
+    </section>
+
+
+    <!-- ============================== -->
+    <!-- CATALOGUE                      -->
+    <!-- ============================== -->
+
+    <main>
+
+        <div id="catalogue">
+
+            <p id="message">
+                Chargement du catalogue...
+            </p>
+
+        </div>
+
+
+        <!-- PAGINATION -->
+
+        <div id="pagination"></div>
+
+    </main>
+
+
+    <!-- ============================== -->
+    <!-- MODALE DETAIL PERSONNAGE       -->
+    <!-- ============================== -->
+
+    <div
+        class="modalOverlay"
+        id="modalOverlay"
+    >
+
+        <div class="modalCard">
+
+
+            <!-- BOUTON FERMER -->
+
+            <button
+                class="modalClose"
+                id="modalClose"
+                aria-label="Fermer"
+            >
+                &times;
+            </button>
+
+
+            <!-- IMAGE -->
+
+            <div class="modalImageWrap">
+
+                <img
+                    id="modalImage"
+                    src=""
+                    alt=""
+                >
+
+            </div>
+
+
+            <!-- INFORMATIONS -->
+
+            <div class="modalBody">
+
+                <p
+                    class="characterName"
+                    id="modalName"
+                ></p>
+
+
+                <p
+                    class="characterInfo"
+                    id="modalRarity"
+                ></p>
+
+
+                <p
+                    class="characterInfo"
+                    id="modalId"
+                ></p>
+
+
+                <p
+                    class="characterInfo"
+                    id="modalDescription"
+                ></p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ============================== -->
+    <!-- JAVASCRIPT                     -->
+    <!-- ============================== -->
+
+    <script src="catalogue.js"></script>
+
+
+</body>
+
+</html>

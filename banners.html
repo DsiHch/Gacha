@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+    <title>Bannières - gachaOpenSource</title>
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+</head>
+<body>
+    <!-- ============================== -->
+    <!-- COMPTE                         -->
+    <!-- ============================== -->
+    <div id="account">
+        <span id="gemsDisplay">0 gemmes</span>
+        <span id="userEmail"></span>
+        <button id="backButton">
+            retour
+        </button>
+        <button id="logoutButton">
+            log out
+        </button>
+    </div>
+
+    <!-- ============================== -->
+    <!-- TOUTES LES BANNIERES           -->
+    <!-- ============================== -->
+    <div id="bannersContainer"></div>
+
+    <!-- ============================== -->
+    <!-- SUPABASE                       -->
+    <!-- ============================== -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="banners.js"></script>
+</body>
+</html>
