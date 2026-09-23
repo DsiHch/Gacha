@@ -54,7 +54,7 @@ try {
     (data.characters || []).forEach((character) => {
 
         if (!character.id) {
-            console.warn("Personnage sans id ignoré :", character);
+            console.warn("ID de personaje ignorado:", character);
             return;
         }
 
@@ -62,7 +62,7 @@ try {
 
         if (charactersById[key]) {
             console.warn(
-                `ID de personnage en doublon dans characters.json, écrasement :`,
+                `ID de personaje no encontrado en characters.json:`,
                 character.id
             );
         }
@@ -71,12 +71,12 @@ try {
 
     });
 
-    console.log("Personnages chargés :", charactersById);
+    console.log("Personajes cargados:", charactersById);
 
 }
 
 catch (error) {
-    console.error("Erreur lors du chargement des personnages :", error);
+    console.error("Error cargando personajes:", error);
 }
 
 }
@@ -101,7 +101,7 @@ try {
     const response = await fetch("banners.json");
 
     if (!response.ok) {
-        throw new Error(`Erreur HTTP ${response.status}`);
+        throw new Error(`Error HTTP ${response.status}`);
     }
 
     const data = await response.json();
@@ -111,14 +111,14 @@ try {
         characters: resolveBannerCharacters(banner)
     }));
 
-    console.log("Bannières chargées :", banners);
+    console.log("Banners cargados :", banners);
 
     renderAllBanners();
 
 }
 
 catch (error) {
-    console.error("Erreur lors du chargement des bannières :", error);
+    console.error("Error cargando banners:", error);
 }
 
 }
@@ -137,7 +137,7 @@ return (banner.characters || [])
 
         if (!character) {
             console.warn(
-                `Personnage introuvable dans characters.json pour la bannière "${banner.name}" :`,
+                `Personaje incontrolable en banner"${banner.name}" :`,
                 id
             );
             return null;
@@ -290,7 +290,7 @@ content.appendChild(description);
 const dates = document.createElement("p");
 dates.className = "bannerModalDates";
 dates.textContent = (banner.startDate || banner.endDate)
-    ? `Disponible du ${banner.startDate || "?"} au ${banner.endDate || "?"}`
+    ? `Disponible ahora ${banner.startDate || "?"} hasta ${banner.endDate || "?"}`
     : "";
 content.appendChild(dates);
 
@@ -380,7 +380,7 @@ const {
 
 if (error) {
     console.error(
-        "Erreur lors de la récupération des gemmes :",
+        "Error en recargando gemas :",
         error.message,
         error.details,
         error.hint,
@@ -393,14 +393,14 @@ if (!data) {
 
     const { error: insertError } = await supabaseClient
         .from("profiles")
-        .insert({ id: user.id, gems: 50 });
+        .insert({ id: user.id, gems: 99999999 });
 
     if (insertError) {
         console.error("Erreur lors de la création du profil :", insertError);
         return;
     }
 
-    userGems = 50;
+    userGems = 9999999999;
 
 } else {
 
