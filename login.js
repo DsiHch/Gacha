@@ -17,9 +17,10 @@ const discordLoginButton =
 
 discordLoginButton.onclick = async function () {
 
-    const { error } = await supabaseClient.auth.signInWithOAuth({
-        provider: "discord",
-        options: {
+    async function signInWithEmail() {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: 'valid.email@supabase.io',
+    password: 'example-password',
             redirectTo: new URL("index.html", window.location.href).href
         }
     });
