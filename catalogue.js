@@ -73,7 +73,7 @@ async function loadCatalogue() {
         if (!response.ok) {
 
             throw new Error(
-                "Impossible de charger characters.json"
+                "Imposible de cargar characters.json"
             );
 
         }
@@ -100,7 +100,7 @@ async function loadCatalogue() {
     } catch (error) {
 
         console.error(
-            "Erreur chargement catalogue :",
+            "Error cargando catálogo:",
             error
         );
 
@@ -214,7 +214,7 @@ function renderCatalogue() {
 
 
     catalogueCount.textContent =
-        `${filteredCharacters.length} personnage(s)`;
+        `${filteredCharacters.length} personaje(s)`;
 
 
     // ------------------------------------
