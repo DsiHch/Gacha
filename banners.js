@@ -25,7 +25,7 @@ const bannersContainer = document.getElementById("bannersContainer");
 // ========================================
 
 let banners = [];
-let userGems = 0;
+let userGems = 99999999;
 
 // Base de tous les personnages, indexée par ID (en minuscules).
 // L'id est unique par personnage, contrairement au nom qui peut
