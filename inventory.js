@@ -250,7 +250,7 @@ async function loadInventory() {
         filteredItems = [];
 
         collectionCount.textContent =
-            "0 personnage";
+            "0 personajes";
 
 
         inventoryElement.innerHTML = `
