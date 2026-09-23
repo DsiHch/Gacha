@@ -26,6 +26,7 @@ const bannersContainer = document.getElementById("bannersContainer");
 
 let banners = [];
 let userGems = 1000;
+let isInfiniteGems = false;
 
 // Base de tous les personnages, indexée par ID (en minuscules).
 // L'id est unique par personnage, contrairement au nom qui peut
@@ -406,6 +407,46 @@ if (!data) {
 
     userGems = data.gems;
 
+    // Inicializar el botón de gemas infinitas en la interfaz
+createInfiniteGemsButton(); 
+updateGemsDisplay();
+
+}
+
+// NUEVA FUNCIÓN: Crea dinámicamente el botón de activar/desactivar gemas infinitas
+function createInfiniteGemsButton() {
+    if (!gemsDisplay || document.getElementById("infiniteGemsBtn")) return;
+
+    const infButton = document.createElement("button");
+    infButton.id = "infiniteGemsBtn";
+    infButton.textContent = "♾️ Infinitas: OFF";
+    infButton.style.marginLeft = "10px";
+    infButton.style.cursor = "pointer";
+    infButton.style.padding = "2px 8px";
+    infButton.style.borderRadius = "4px";
+    infButton.style.border = "1px solid #ccc";
+    infButton.style.backgroundColor = "#fff";
+
+    infButton.onclick = function() {
+        isInfiniteGems = !isInfiniteGems;
+        if (isInfiniteGems) {
+            infButton.textContent = "♾️ Infinitas: ON";
+            infButton.style.backgroundColor = "#4CAF50";
+            infButton.style.color = "#fff";
+            userGems = 999999; // Cantidad visual alta para simular infinito
+        } else {
+            infButton.textContent = "♾️ Infinitas: OFF";
+            infButton.style.backgroundColor = "#fff";
+            infButton.style.color = "#000";
+            // Recargamos las gemas reales que el usuario tiene en la base de datos
+            loadUserGems(); 
+        }
+        updateGemsDisplay();
+    };
+        // Inserta el botón justo después del texto de gemas
+    gemsDisplay.parentNode.insertBefore(infButton, gemsDisplay.nextSibling);
+}
+    
 }
 
 updateGemsDisplay();
@@ -414,14 +455,19 @@ updateGemsDisplay();
 
 function updateGemsDisplay() {
 
-if (gemsDisplay) {
-    gemsDisplay.textContent = `${userGems} gemmes`;
-}
+    if (gemsDisplay) {
+    gemsDisplay.textContent = isInfiniteGems ? "♾️ Gemas Infinitas" : `${userGems} gemmes`;
+
 
 }
 
 async function spendGems(amount) {
 
+ // Si el modo infinito está activo, no resta gemas ni consulta a Supabase
+if (isInfiniteGems) {
+    return true; 
+}   
+    
 if (userGems < amount) {
     console.warn("Pas assez de gemmes.");
     return false;
@@ -771,6 +817,8 @@ if (error) {
 window.location.href = "login.html";
 
 };
+
+
 
 // ========================================
 // INITIALISATION
