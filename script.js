@@ -270,7 +270,7 @@ async function loadUserGems() {
                 .from("profiles")
                 .insert({
                     id: user.id,
-                    gems: 50,
+                    gems: 1000,
                     discord_id: discordId
                 });
 
