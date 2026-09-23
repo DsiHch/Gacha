@@ -25,7 +25,7 @@ const bannersContainer = document.getElementById("bannersContainer");
 // ========================================
 
 let banners = [];
-let userGems = 99999999;
+let userGems = 0;
 
 // Base de tous les personnages, indexée par ID (en minuscules).
 // L'id est unique par personnage, contrairement au nom qui peut
@@ -393,14 +393,14 @@ if (!data) {
 
     const { error: insertError } = await supabaseClient
         .from("profiles")
-        .insert({ id: user.id, gems: 99999999 });
+        .insert({ id: user.id, gems: 50 });
 
     if (insertError) {
         console.error("Erreur lors de la création du profil :", insertError);
         return;
     }
 
-    userGems = 9999999999;
+    userGems = 50;
 
 } else {
 
